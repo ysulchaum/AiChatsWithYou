@@ -1,5 +1,6 @@
 {
   "name": "3280project",
+  "homepage": "https://ysulchaum.github.io/AiChatsWithYou/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,11 +8,15 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+    
   },
   "dependencies": {
     "@react-oauth/google": "^0.12.1",
     "bootstrap": "^5.3.5",
+    "gh-pages": "^6.3.0",
     "jwt-decode": "^4.0.0",
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.9",
@@ -26,6 +31,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
+    "@types/css-modules": "^1.0.5",
     "@types/jwt-decode": "^2.2.1",
     "@types/react": "^19.0.11",
     "@types/react-dom": "^19.0.4",

@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { Message } from '../App.tsx'; // Import the Message interface
 
+
 interface ConversationState {
   conversation: Message[];
   image: string | null;

@@ -3,9 +3,9 @@ import { useState, useRef, useEffect } from "react";
 import { FaMicrophone, FaMicrophoneSlash } from "react-icons/fa";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
-import { useConversationStore } from "./store/conversationStore"; // Import the store
+import { useConversationStore } from "./store/conversationStore.tsx"; // Import the store
 
-interface Message {
+export interface Message {
   id: string;
   speaker: "user" | "assistant";
   text: string;
