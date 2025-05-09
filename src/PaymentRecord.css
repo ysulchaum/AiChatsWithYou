@@ -1,0 +1,135 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .payment-record-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    background-color: #343434;
+  }
+  
+  .content-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .payment-record-card {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 40px;
+    padding: 30px;
+    width: 100%;
+    max-width: 1000px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  
+  .payment-record-title {
+    font-size: 1.5rem;
+    color: #363636;
+    margin: 0 0 20px 0;
+    text-align: center;
+  }
+  
+  .payments-table-container {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+  }
+  
+  .payments-table-container::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  .payments-table-container::-webkit-scrollbar-thumb {
+    background-color: #343434;
+    border-radius: 10px;
+  }
+  
+  .payments-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #343434;
+  }
+  
+  .payments-table th,
+  .payments-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .payments-table th {
+    background-color: rgba(255, 255, 255, 0.3);
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+  }
+  
+  .payments-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .no-records {
+    text-align: center;
+    color: #343434;
+    margin: 20px 0;
+    font-size: 1.1rem;
+  }
+  
+  .status-message {
+    text-align: center;
+    color: #343434;
+    margin-bottom: 20px;
+  }
+  
+  .payment-record-button {
+    background-color: #343434;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    width: 100%;
+  }
+  
+  .payment-record-button:hover {
+    background-color: #222222;
+  }
+  
+  .loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .circle-loader {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #343434;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+ 

@@ -1,0 +1,425 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* Prevent scrolling */
+}
+
+.menu-button{
+  position: absolute;
+  z-index: 1001;
+}
+.menu-button a{
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  padding: 50px 10px 10px 10px;
+  margin: 50px 30px 30px 30px;
+  background-color: #aaa;
+  border-radius: 20px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+}
+.menu-button:hover{
+  cursor: pointer;
+}
+
+nav{
+  background-color: aliceblue;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+nav a{
+  height: 50%;
+  padding: 5px;
+  margin: 10px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: #333;
+  font-weight: bold;
+}
+nav a:hover{
+  background-color: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+.sidebar{
+  position: absolute;
+  top: 0;
+  left: -260px; /* Start off-screen */
+  width: 200px;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  z-index: 1002;
+  color: white;
+  margin: 0;
+  padding: 20px;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  transform: translateX(0); /* Initial transform state */
+  transition: transform 0.3s ease-in-out; /* Smooth transition for transform */
+}
+.sidebar.active {
+  transform: translateX(260px); /* Slide in to left: 0 */
+}
+.sidebar li{
+  width: 90%;
+}
+.sidebar a{
+  width: 90%;
+}
+
+
+.close-menu:hover{
+  cursor: pointer;
+}
+
+
+
+.app-container {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: #343434;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  flex-direction: row;
+  height: 100vh;
+  width: 100vw;
+}
+/* background-image: url("./background.png");*/
+
+.left-side {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 40px;
+  padding: 20px;
+  margin: 20px;
+  margin-right: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100px; /* Adjust this to control the container's height */
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 1.5rem;
+  color: #363636;
+  margin: 0;
+  position: relative;
+  top: 0;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%; /* Adjust this to control the container's height relative to the parent */
+  max-height: 400px; /* Optional: Set a maximum height to prevent overflow */
+  margin-bottom: 20px;
+  overflow: hidden; /* Ensure the image doesn't overflow the container */
+}
+
+.assistant-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ensures the image scales without cropping */
+  border-radius: 20px;
+}
+
+.control-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(100, 100, 100, 0.3);
+  border-radius: 40px;
+  padding: 20px;
+  margin-bottom: 10px;
+  margin-top: auto;
+  position: relative;
+  bottom: 0;
+}
+
+.clear-button {
+  background-color: #343434;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.clear-button:hover {
+  background-color: #222222;
+}
+
+.mic-button {
+  background-color: #343434;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.mic-button:hover {
+  background-color: #222222;
+}
+
+/* switch */
+.toggleCheckbox {
+  display: none;
+}
+.toggleContainer {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: fit-content;
+  border: 3px solid #343434;
+  border-radius: 20px;
+  background: #343434;
+  font-weight: bold;
+  color: #343434;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.toggleContainer::before {
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  left: 0%;
+  border-radius:20px;
+  background: white;
+  transition: all 0.3s;
+}
+.toggleContainer div {
+  padding: 6px;
+  text-align: center;
+  z-index: 1;
+}
+.toggleCheckbox:checked + .toggleContainer::before {
+  left: 50%;
+}
+.toggleCheckbox:checked + .toggleContainer div:first-child{
+  color: white;
+  transition: color 0.3s;
+}
+.toggleCheckbox:checked + .toggleContainer div:last-child{
+  color: #343434;
+  transition: color 0.3s;
+}
+.toggleCheckbox + .toggleContainer div:first-child{
+  color: #343434;
+  transition: color 0.3s;
+}
+.toggleCheckbox + .toggleContainer div:last-child{
+  color: white;
+  transition: color 0.3s;
+}
+/* switch */
+
+.status{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+
+/* Loader styles */
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  position: relative;
+  top: 0;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.circle-loader {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid #343434;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+.right-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  flex-direction: column;
+  border-radius: 40px;
+  padding: 20px;
+  margin: 20px;
+  margin-left: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.conversation-container {
+  width: 100%;
+  max-width: 600px;
+  background-color: rgba(255, 255, 255, 0);
+  overflow-y: auto;
+  border-radius: 8px;
+  padding: 1rem;
+  height: 100%;
+}
+
+.conversation-container::-webkit-scrollbar {
+  display: block;
+  width: 5px;
+  height: 8px;
+  background-color: #aaa; /* or add it to the track */
+}
+
+.conversation-container::-webkit-scrollbar-thumb {
+  background-color: #343434;
+  border-radius: 10px;
+}
+
+.message {
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border-radius: 20px;
+}
+
+.user-message {
+  background-color: #343434;
+  color: white;
+}
+
+.assistant-message {
+  background-color: white;
+  color: #343434;
+}
+
+audio::-webkit-media-controls-play-button,
+     audio::-webkit-media-controls-panel {
+     background-color: white;
+     color: #000;
+     }
+
+.loading-text{
+  margin: 0px 10px;
+}
+
+.loading-text span{
+  width:8px;
+  height:8px;
+  margin: 0 2px;
+  background-color: #343434;
+  border-radius: 50%;
+  display: inline-block;
+  animation: dots 1.2s infinite ease-in-out;
+}
+
+.loading-text span:nth-child(2) {
+  background-color: #343434;
+  animation-delay: 0.4s;
+}
+
+.loading-text span:nth-child(3) {
+  background-color: #343434;
+  animation-delay: 0.8s;
+}
+
+@keyframes dots {
+  50%{
+    opacity: 0;
+    transform: scale(0.7) translateY(4px);
+  }
+}
+
+.typewriter-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.text-input {
+  flex: 1;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 15px;
+  padding: 10px;
+  font-size: 1rem;
+  resize: none;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.text-input:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.send-button {
+  background-color: #343434;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.send-button:hover {
+  background-color: #222222;
+}
